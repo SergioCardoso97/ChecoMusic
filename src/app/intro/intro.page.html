@@ -1,0 +1,14 @@
+<ion-content padding [fullscreen]="true">
+  <ion-slides [options]="slideOps" pager="true">
+    <ion-slide *ngFor="let slide of slides">
+      <ion-icon name="close-circle" (click)="goHome()"></ion-icon>
+      <img [src]="slide.img"/>
+      <h1>{{slide.title}}</h1><br>
+      <h2>{{slide.subtitle}}</h2>
+      <p>
+        {{slide.content}}
+      </p>
+      <ion-icon [name]="slide.icon"></ion-icon>
+    </ion-slide>
+  </ion-slides>
+</ion-content>

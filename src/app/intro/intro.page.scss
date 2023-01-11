@@ -1,0 +1,36 @@
+ion-content {
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+  }
+  ion-slides {
+    height: 100%;
+    max-width: 800px;
+  }
+  .swiper-slide {
+    display: block;
+    margin-bottom: 64px;
+    background-color: black;
+  }
+  ion-slide > h1,
+  h2 {
+    margin: 0 0 0 0;
+    color: white;
+  }
+  ion-slide > p {
+    font-style: italic;
+    font-size: 20px;
+    padding: 1em 1em 1em 1em;
+  }
+  ion-slide > ion-icon {
+    color: white;
+    font-size: 48px;
+  }
+  ion-slide > ion-icon[name="close-circle"] {
+    float: right;
+    color: white;
+    font-size: 48px;
+  }
+  ion-slide > img {
+    max-height: 50%;
+    max-width: 60%;
+    margin: 64px 0;
+  }
