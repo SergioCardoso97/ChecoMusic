@@ -1,3 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
 <ion-content padding [fullscreen]="true">
-  <h1>Home vacio</h1>
+  <h1>Artists</h1>
+  <ion-slides [options]="slideOps" *ngIf="artists.length">
+    <ion-slide *ngFor="let artist of artists; let i = index">
+      <ion-avatar>
+        <img [src]="artist.images[0].url"/>
+        <span>{{artist.name}}</span>
+      </ion-avatar>
+    </ion-slide>
+  </ion-slides>
+  <!-- <h1>Songs</h1>
+  <ion-slides [options]="slideOps" *ngIf="artists.length">
+    <ion-slide *ngFor="let artist of artists; let i = index">
+      <ion-avatar>
+        <img src="https://via.placeholder.com/150" />
+        <span>{{i}}</span>
+      </ion-avatar>
+    </ion-slide>
+  </ion-slides>
+  <h1>Album</h1>
+  <ion-slides [options]="slideOps" *ngIf="artists.length">
+    <ion-slide *ngFor="let artist of artists; let i = index">
+      <ion-avatar>
+        <img src="https://via.placeholder.com/150" />
+        <span>{{i}}</span>
+      </ion-avatar>
+    </ion-slide>
+  </ion-slides> -->
 </ion-content>

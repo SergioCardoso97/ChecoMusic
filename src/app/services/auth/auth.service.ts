@@ -1,23 +1,31 @@
 import { Injectable } from '@angular/core';
-import { testUserAgent } from '@ionic/core/dist/types/utils/platform';
+import { Storage } from '@ionic/storage-angular';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor() { }
+  constructor(private storage: Storage) 
+  {
+    this.storage.create();
+    // this.storage.set("user", 0)
+  }
 
-  loginUser(credential: any){
+  async loginUser(credential: any){
+    var dataUserRegister: any = await this.storage.get("user");
     return new Promise((accept, reject) => {
       if (
-        credential.email == "test@test.com" &&
-        credential.password == "12345"
+        credential.email == dataUserRegister.email &&
+        credential.password == dataUserRegister.password
       ) {
         accept("Login Correcto")
       } else {
         reject("Login Incorrecto")
       }
     })
+  }
+  registerUser(registerForm: any){
+    return this.storage.set("user", registerForm)
   }
 }

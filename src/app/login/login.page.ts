@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { NavController } from '@ionic/angular';
 import { AuthService } from '../services/auth/auth.service';
+import { Storage } from '@ionic/storage-angular';
 import swal from 'sweetalert2';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -11,11 +12,12 @@ import swal from 'sweetalert2';
 export class LoginPage implements OnInit {
 
   loginForm: FormGroup;
-  errorMessage: string = '';
   constructor(private formBuilder: FormBuilder, 
               private authServices: AuthService,
-              private navControles: NavController) { 
-    this.loginForm = this.formBuilder.group({
+              private router: Router,
+              private storage: Storage) { 
+                
+      this.loginForm = this.formBuilder.group({
       email: new FormControl(null, Validators.compose([
         Validators.required,
         Validators.email,
@@ -27,19 +29,26 @@ export class LoginPage implements OnInit {
     });
    }
 
-  ngOnInit() {
+  async ngOnInit() {
+    await this.storage.create();    
+    this.storage.set('isUserLoggedIn', false);
   }
 
   loginUser(loginForm: any){
     console.log("credenciales ->", loginForm);
     this.authServices.loginUser(loginForm).then(res => {
-      swal.fire('Login successful!!', "hola", 'success');
-      this.navControles.navigateForward("/home")
+      //swal.fire('Login successful!!', "hola", 'success');
+      this.storage.set('isUserLoggedIn', true);
+      this.router.navigateByUrl("/menu/home")
     }).catch(res => {
-      this.errorMessage = "User not found!!";
-      swal.fire('User not found!!', "hola", 'error');
+      alert("User not found!!");
+      //swal.fire('User not found!!', "hola", 'error');
+      this.storage.set('isUserLoggedIn', false);
     });
     
+  }
+  goToRegister(){
+    this.router.navigateByUrl("/register")
   }
 
 }

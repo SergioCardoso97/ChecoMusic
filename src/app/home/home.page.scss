@@ -25,3 +25,16 @@
 // #container a {
 //   text-decoration: none;
 // }
+ion-avatar {
+    height: 120px;
+    width: 90px;
+    
+    img {
+    height: 90px;
+    width: 90px;
+    }
+    
+    span {
+    font-size: 15px;
+    }
+}

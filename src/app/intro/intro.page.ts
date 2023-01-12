@@ -39,8 +39,9 @@ export class IntroPage implements OnInit {
       icon: "locate"
     });
   }
-  goHome(){
-    this.router.navigateByUrl('/home')
+  goHome(){    
+    
+    this.router.navigateByUrl('/login')
   }
   async ngOnInit() {
     await this.storage.create();
