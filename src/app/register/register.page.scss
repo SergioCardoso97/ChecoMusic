@@ -2,3 +2,13 @@ ion-icon {
     color: white;
     font-size: 40px;
   }
+  ion-header{
+    --ion-background-color:black;
+}
+ion-content{
+    --ion-background-color:black;
+}
+ion-item{
+  --ion-background-color:gray;
+  --ion-text-color: white;
+}

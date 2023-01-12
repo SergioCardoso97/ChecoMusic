@@ -1,0 +1,30 @@
+ion-avatar {
+    height: 120px;
+    width: 90px;
+    --ion-background-color:black;
+    img {
+    height: 90px;
+    width: 90px;
+    }
+    
+    span {
+    font-size: 15px;
+    }
+}
+ion-header{
+    --ion-background-color:black;
+    --ion-text-color: white;
+}
+ion-content{
+    --ion-background-color:black;
+    --ion-text-color: white;
+}
+ion-item{
+    --ion-background-color:red;
+}
+ion-list{
+    --ion-background-color:red;
+}
+ion-icon{
+    --ion-text-color: white;
+}

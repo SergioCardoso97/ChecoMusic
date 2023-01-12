@@ -38,6 +38,16 @@ export class LoginPage implements OnInit {
     console.log("credenciales ->", loginForm);
     this.authServices.loginUser(loginForm).then(res => {
       //swal.fire('Login successful!!', "hola", 'success');
+      this.loginForm = this.formBuilder.group({
+      email: new FormControl(null, Validators.compose([
+        Validators.required,
+        Validators.email,
+      ])),
+      password: new FormControl('', Validators.compose([
+        Validators.required,
+        Validators.minLength(5)
+      ])),
+    });
       this.storage.set('isUserLoggedIn', true);
       this.router.navigateByUrl("/menu/home")
     }).catch(res => {

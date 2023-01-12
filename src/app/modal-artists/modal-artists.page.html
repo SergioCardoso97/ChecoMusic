@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ artist.name + "- Top tracks" }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-icon name="close-circle" (click)="closeModal()" size="large"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let img of artist.images; index as i">
+      <ion-avatar>
+        <img [src]="img.url">
+      </ion-avatar>
+    </ion-item>
+  </ion-list>
+</ion-content>

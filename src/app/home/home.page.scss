@@ -38,3 +38,17 @@ ion-avatar {
     font-size: 15px;
     }
 }
+ion-header{
+    --ion-background-color:black;
+    --ion-text-color: white;
+}
+ion-content{
+    --ion-background-color:black;
+    --ion-text-color: white;
+}
+ion-item{
+    --ion-background-color:gray;
+}
+ion-icon{
+    --ion-text-color: white;
+}

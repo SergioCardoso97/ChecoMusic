@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 import { ApiMusicService } from '../services/apiMusic/api-music.service';
+import { ModalArtistsPage } from '../modal-artists/modal-artists.page';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -14,12 +16,22 @@ export class HomePage implements OnInit {
     centeredSlides: true,
     speed: 400
   };
-  constructor(private apiMusic: ApiMusicService) {
+  constructor(private apiMusic: ApiMusicService,
+              private modalController: ModalController) {
   }
    ngOnInit() {
     this.artists = this.apiMusic.getNewReleases().items
     console.log("Artists -> ", this.artists);
         
+  }
+  async openModal(artist: any){
+    const res = this.modalController.create({
+      component: ModalArtistsPage,
+      componentProps: {
+        artist: artist
+      }
+    });
+    return (await res).present()
   }
 
 }
