@@ -9,27 +9,30 @@
   </figure>
   <form [formGroup]="registerForm" (ngSubmit)="registerUser(registerForm.value)">
     <ion-item>
+      <ion-label>birthdate</ion-label>
+      <ion-input type="date" formControlName="birthdate" ></ion-input>
+    </ion-item>
+    <div class="validation-error">
+      <div *ngIf="registerForm.get('birthdate')?.errors?.['required'] && (this.registerForm.get('birthdate')?.dirty || this.registerForm.get('birthdate')?.touched)">
+        Birthdate is required
+      </div>
+    </div>
+    <ion-item>
       <ion-label>Name</ion-label>
-      <ion-input formControlName="name"></ion-input>
+      <ion-input formControlName="name" ></ion-input>
     </ion-item>
     <div class="validation-error">
       <div *ngIf="registerForm.get('name')?.errors?.['required'] && (this.registerForm.get('name')?.dirty || this.registerForm.get('name')?.touched)">
         Name is required
       </div>
-      <div *ngIf="registerForm.get('name')?.errors?.['pattern']">
-       Name invalid
-      </div>
     </div>
     <ion-item>
-      <ion-label>LastName</ion-label>
-      <ion-input formControlName="name2"></ion-input>
+      <ion-label>UserName</ion-label>
+      <ion-input formControlName="userName" ></ion-input>
     </ion-item>
     <div class="validation-error">
-      <div *ngIf="registerForm.get('name2')?.errors?.['required'] && (this.registerForm.get('name2')?.dirty || this.registerForm.get('name2')?.touched)">
+      <div *ngIf="registerForm.get('userName')?.errors?.['required'] && (this.registerForm.get('userName')?.dirty || this.registerForm.get('userName')?.touched)">
         LastName is required
-      </div>
-      <div *ngIf="registerForm.get('name2')?.errors?.['pattern']">
-        LastName invalid
       </div>
     </div>
     <ion-item>

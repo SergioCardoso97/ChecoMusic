@@ -18,13 +18,14 @@ export class RegisterPage implements OnInit {
               private router: Router,
               private storage: Storage) { 
                 this.registerForm = this.formBuilder.group({
-                  name: new FormControl('', Validators.compose([
-                    Validators.required,
-                    Validators.pattern('[a-zA-zÑñáéíóúüÁÉÍÓÚÜ\s]+')
+                  bithdate: new FormControl('', Validators.compose([
+                    Validators.required
                   ])),
-                  name2: new FormControl('', Validators.compose([
-                    Validators.required,
-                    Validators.pattern('[a-zA-zÑñáéíóúüÁÉÍÓÚÜ\s]+')
+                  name: new FormControl('', Validators.compose([
+                    Validators.required
+                  ])),
+                  userName: new FormControl('', Validators.compose([
+                    Validators.required
                   ])),
                   email: new FormControl(null, Validators.compose([
                     Validators.required,
@@ -69,7 +70,7 @@ export class RegisterPage implements OnInit {
         Validators.required,
         Validators.pattern('[a-zA-zÑñáéíóúüÁÉÍÓÚÜ\s]+')
       ])),
-      name2: new FormControl('', Validators.compose([
+      userName: new FormControl('', Validators.compose([
         Validators.required,
         Validators.pattern('[a-zA-zÑñáéíóúüÁÉÍÓÚÜ\s]+')
       ])),

@@ -38,11 +38,19 @@ export class SettingsPage implements OnInit {
   }
   async alertChangeDataUserLogin(i: number){
     const alert = await this.alertController.create({
+      header: "Change Name User",
       inputs: [
-      {
-          name: 'name1',
-          type: 'text'
-      }],    
+        {
+            name: 'name1',
+            type: 'text',
+            placeholder: "Enter the new user"
+        },
+        {
+          name: 'name2',
+          type: 'date',
+          //placeholder: "Enter the new user"
+      },
+      ],    
       buttons: [
           {
               text: 'Cancel',
@@ -53,7 +61,7 @@ export class SettingsPage implements OnInit {
               }
           }, 
           {
-              text: 'Ok',
+              text: 'Change',
               handler: (alertData) => { //takes the data 
                   this.handlerMessage =  alertData.name1;
               }
