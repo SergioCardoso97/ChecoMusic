@@ -20,8 +20,13 @@ export class ModalArtistsPage {
     this.artist = this.navParams.data["artist"];
   }
 
-  async closeModal() {
-    await this.modalController.dismiss();
+  async closeModal(flag: boolean, gen: string) {
+    if (flag) {
+      await this.modalController.dismiss(gen);  
+    } 
+    else {
+      await this.modalController.dismiss(1);
+    }
   }
 
 }

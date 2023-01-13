@@ -1,10 +1,57 @@
 <ion-header>
   <ion-toolbar>
+    Settings
     <ion-buttons slot="end">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-<ion-content padding [fullscreen]="true">
-  <h1>Settings vacio</h1>
+<ion-content ppenciling [fullscreen]="true">
+  <ion-grid fixed>
+    <ion-row class="ion-align-items-center ion-justify-content-center">
+      <ion-col size="4"></ion-col>
+      <ion-col (click)="takePhoto()" class=" ion-text-center success-background" size="4">
+        <ion-avatar (click)="takePhoto()">
+          <img [src]="userImage" alt="" *ngIf="!photo">
+          <img [src]="photo" alt="" *ngIf="photo">
+        </ion-avatar>
+      </ion-col>
+      <ion-col size="4"></ion-col>
+    </ion-row>
+    <ion-row class="ion-align-items-center ion-justify-content-center">
+      <ion-col class=" ion-text-center" size="6"><h1>User</h1></ion-col>
+      <ion-col class=" ion-text-center" size="6"><h1>Email</h1></ion-col>
+    </ion-row>
+    <ion-row class="ion-align-items-center ion-justify-content-center">
+      <ion-col class=" ion-text-center" size="5">
+        <h6>{{this.userLogin.name + " " + this.userLogin.name2}}</h6>
+      </ion-col>
+      <ion-col class=" ion-text-center" size="1">
+        <ion-icon (click)="alertChangeDataUserLogin(1)" size="md" name="pencil"></ion-icon>
+      </ion-col>
+      <ion-col class=" ion-text-center" size="5">
+        <h6>{{this.userLogin.email}}</h6>
+      </ion-col>
+      <ion-col (click)="alertChangeDataUserLogin(2)" class=" ion-text-center" size="1">
+        <ion-icon size="md" name="pencil"></ion-icon>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <ion-button (click)="alertChangeDataUserLogin(3)" expand="full">
+          Change Password <ion-icon size="md" name="key-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    {{handlerMessage}}
+  </ion-grid>
+  
+  <!-- <ion-item>
+    <ion-label>Name</ion-label>
+    <ion-datetime displayFormat="MM/DD/YYYY" (ngModelChange)="changeModel" [(ngModel)]="date"></ion-datetime>
+  </ion-item>
+  <ion-item>
+    {{date}}
+    
+  </ion-item> -->
 </ion-content>

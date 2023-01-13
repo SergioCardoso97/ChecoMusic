@@ -10,6 +10,12 @@ import { ModalArtistsPage } from '../modal-artists/modal-artists.page';
 export class HomePage implements OnInit {
   
   artists: any[] = [];
+  currentSong: any = new Audio("../../assets/31 Minutos - Doggy Style.mp3");
+  newTime: number | undefined;
+  artistGen: any = {
+    gen: '',
+    playing: false
+  };
   slideOps = {
     initialSlide: 1,
     slidesPerView: 3,
@@ -25,13 +31,49 @@ export class HomePage implements OnInit {
         
   }
   async openModal(artist: any){
+    this.artistGen.gen = '';
     const res = this.modalController.create({
       component: ModalArtistsPage,
       componentProps: {
         artist: artist
       }
     });
+    (await res).onDidDismiss().then(dataReturned => {
+      console.log("Data Return -> ", dataReturned);
+      if (dataReturned.data != 1) {
+        this.artistGen.gen = dataReturned.data;
+      }
+      
+    })
     return (await res).present()
+  }
+  play(){
+    
+    this.currentSong.play()
+    this.currentSong.addEventListener("timeupdate",()=>{
+      this.newTime = (this.currentSong.currentTime / this.currentSong.duration);
+    });
+    this.artistGen.playing = true;
+  }
+  pause(){
+    this.currentSong.pause()
+    this.artistGen.playing = false;
+  }
+  parseTime(time:string){
+    let minutes;
+    let seconds;
+    if (time != "0:00") {
+      const partTime = parseInt(time.toString().split(".")[0], 10)
+      minutes = Math.floor(partTime/60).toString();
+      if (minutes.length == 1) {
+        minutes = "0" + minutes;
+      }
+      seconds = (partTime%60).toString();
+      if (seconds.length == 1) {
+        seconds = "0" + seconds;
+      }      
+    }
+    return minutes + ":" + seconds;
   }
 
 }

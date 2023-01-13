@@ -1,13 +1,14 @@
 ion-avatar {
-    height: 120px;
+    height: 150px;
     width: 90px;
+    font-size: 15px;
     --ion-background-color:black;
     img {
     height: 90px;
     width: 90px;
     }
     
-    span {
+    h1 {
     font-size: 15px;
     }
 }

@@ -1,5 +1,6 @@
 <ion-header>
   <ion-toolbar>
+    Home
     <ion-buttons slot="end">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
@@ -34,3 +35,35 @@
     </ion-slide>
   </ion-slides> -->
 </ion-content>
+<ion-footer>
+  <!-- <ion-text color="danger" *ngIf="artistGen == ''">
+    <h2>Aqui aparecera el genero del artista</h2>
+  </ion-text>
+  <ion-text color="danger" *ngIf="artistGen != ''">
+    <h2>{{artistGen}}</h2>
+  </ion-text> -->
+  <ion-grid>
+    <ion-row *ngIf="artistGen.gen != ''">
+      <ion-col class="ion-text-center" size="6">{{ parseTime(currentSong.currentTime) || "00:00"}}</ion-col>
+      <ion-col class="ion-text-center" size="6">{{ parseTime(currentSong.duration) || "00:00"}}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="ion-text-center" size="12">
+        <ion-progress-bar [value]="this.newTime"></ion-progress-bar>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="ion-text-center" size="1">
+        <ion-icon name="heart"></ion-icon>
+      </ion-col>
+      <ion-col class="ion-text-center" size="10">
+        {{artistGen.gen || "You haven't selected a genre yet"}}
+      </ion-col>
+      <ion-col class="ion-text-center" size="1">
+        <ion-icon name="play" (click)="play()" *ngIf="!artistGen.playing"></ion-icon>
+        <ion-icon name="pause" (click)="pause()" *ngIf="artistGen.playing"></ion-icon>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  
+</ion-footer>

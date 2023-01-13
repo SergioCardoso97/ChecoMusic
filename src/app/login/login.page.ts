@@ -49,7 +49,7 @@ export class LoginPage implements OnInit {
       ])),
     });
       this.storage.set('isUserLoggedIn', true);
-      this.router.navigateByUrl("/menu/home")
+      this.router.navigateByUrl("/menu")
     }).catch(res => {
       alert("User not found!!");
       //swal.fire('User not found!!', "hola", 'error');
