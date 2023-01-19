@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth/auth.service';
 import { Storage } from '@ionic/storage-angular';
-import swal from 'sweetalert2';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
@@ -37,7 +36,6 @@ export class LoginPage implements OnInit {
   loginUser(loginForm: any){
     console.log("credenciales ->", loginForm);
     this.authServices.loginUser(loginForm).then(res => {
-      //swal.fire('Login successful!!', "hola", 'success');
       this.loginForm = this.formBuilder.group({
       email: new FormControl(null, Validators.compose([
         Validators.required,
@@ -52,7 +50,6 @@ export class LoginPage implements OnInit {
       this.router.navigateByUrl("/menu")
     }).catch(res => {
       alert("User not found!!");
-      //swal.fire('User not found!!', "hola", 'error');
       this.storage.set('isUserLoggedIn', false);
     });
     

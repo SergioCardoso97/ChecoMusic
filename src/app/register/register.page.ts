@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth/auth.service';
 import { Storage } from '@ionic/storage-angular';
-import swal from 'sweetalert2';
 import { Router } from '@angular/router';
 
 @Component({
@@ -18,7 +17,7 @@ export class RegisterPage implements OnInit {
               private router: Router,
               private storage: Storage) { 
                 this.registerForm = this.formBuilder.group({
-                  bithdate: new FormControl('', Validators.compose([
+                  birthdate: new FormControl('', Validators.compose([
                     Validators.required
                   ])),
                   name: new FormControl('', Validators.compose([
@@ -49,12 +48,10 @@ export class RegisterPage implements OnInit {
     if (registerForm.password == registerForm.password2) {
       console.log("credenciales ->", registerForm);
       this.authServices.registerUser(registerForm).then(res => {
-        //swal.fire('Login successful!!', "hola", 'success');
         this.resetForm();
         this.router.navigateByUrl("/login")
       }).catch(res => {
         alert("User invalid");
-        //swal.fire('User not found!!', "hola", 'error');
       });
     } 
     else {
