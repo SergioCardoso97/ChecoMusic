@@ -32,6 +32,7 @@ const routes: Routes = [
     loadChildren: () => import('./modal-artists/modal-artists.module').then( m => m.ModalArtistsPageModule)
   },
 
+
 ];
 
 @NgModule({

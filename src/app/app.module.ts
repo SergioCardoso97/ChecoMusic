@@ -7,6 +7,7 @@ import { IonicStorageModule} from '@ionic/storage-angular';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ModalArtistsPageModule } from './modal-artists/modal-artists.module';
+import { GoogleMapsModule } from '@angular/google-maps';
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -14,6 +15,7 @@ import { ModalArtistsPageModule } from './modal-artists/modal-artists.module';
     IonicModule.forRoot(), 
     AppRoutingModule,
     ModalArtistsPageModule,
+    GoogleMapsModule,
     IonicStorageModule.forRoot(),
     
   ],
